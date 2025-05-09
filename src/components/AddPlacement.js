@@ -357,7 +357,7 @@ const AddPlacement = ({ postPlacementDetails, PlacementDetails }) => {
             open={snackbarOpen}
             autoHideDuration={4000}
             onClose={handleSnackbarClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
           >
             <Alert
               onClose={handleSnackbarClose}
