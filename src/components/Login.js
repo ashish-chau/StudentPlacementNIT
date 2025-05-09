@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, Typography, Container, Snackbar, Alert } from '@mui/material';
+import { TextField, Button, Box, Typography, Container, Snackbar, Alert, Paper } from '@mui/material';
 import { connect } from 'react-redux';
 import { postLogin } from '../redux/action/action';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,6 @@ const Login = ({ postLogin, login }) => {
   };
 
   useEffect(() => {
-    // Only act if we have either a success or an error state
     if (login.data || login.error) {
       const message = login.isSuccess ? login.data?.message : login.error?.message || "Login failed";
       
@@ -51,46 +50,70 @@ const Login = ({ postLogin, login }) => {
         justifyContent="center"
         minHeight="100vh"
       >
-        <Typography variant="h5" gutterBottom>
-          Login
-        </Typography>
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <TextField
-            label="Mobile No."
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            type="tel"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            required
-          />
-          <TextField
-            label="Password"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
+        {/* Form Container with Paper */}
+        <Paper
+          elevation={5}
+          sx={{
+            p: 4,
+            borderRadius: 3,
+            backgroundColor: '#f5f5f5',
+            width: '100%',
+            maxWidth: '400px',
+            boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          <Typography variant="h5" align="center" gutterBottom sx={{ fontWeight: 'bold', color: '#3f51b5' }}>
             Login
-          </Button>
-        </form>
-      </Box>
+          </Typography>
+          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+            <TextField
+              label="Mobile No."
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type="tel"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              required
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '8px',
+                },
+              }}
+            />
+            <TextField
+              label="Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '8px',
+                },
+              }}
+            />
+            <Button type="submit" variant="contained" fullWidth sx={{ mt: 2, borderRadius: '8px', backgroundColor: '#3f51b5', '&:hover': { backgroundColor: '#303f9f' } }}>
+              Login
+            </Button>
+          </form>
+        </Paper>
 
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={4000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }} 
-      >
-        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+        {/* Snackbar for showing success/error message */}
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={4000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
+      </Box>
     </Container>
   );
 };

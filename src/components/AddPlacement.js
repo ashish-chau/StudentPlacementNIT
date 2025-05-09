@@ -1,259 +1,27 @@
-// import React, { useState } from 'react';
-// import {
-//   Container,
-//   TextField,
-//   Button,
-//   Box,
-//   MenuItem,
-//   Typography,
-//   InputLabel,
-//   Select,
-//   FormControl,
-//   Paper,
-// } from '@mui/material';
-
-// const courseOptions = ['BCA', 'MCA', 'B.Tech', 'MBA'];
-
-// const AddPlacement = () => {
-//   const [form, setForm] = useState({
-//     batchName: '',
-//     batchTime: '',
-//     startDate: '',
-//     courseName: '',
-//     studentName: '',
-//     mobile: '',
-//     email: '',
-//     companyName: '',
-//     location: '',
-//     technology: '',
-//     package: '',
-//     offerLetter: null,
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value, type, files } = e.target;
-//     setForm({
-//       ...form,
-//       [name]: type === 'file' ? files[0] : value,
-//     });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log('Form submitted:', form);
-//   };
-
-//   return (
-//     <Container maxWidth="md">
-//       <Paper
-//         elevation={3}
-//         sx={{
-//           p: 4,
-//           mt: 5,
-//           borderRadius: 3,
-//           border: '1px solid #ccc',
-//           backgroundColor: '#fff',
-//         }}
-//       >
-//         <Typography variant="h5" align="center" gutterBottom>
-//           Add Placement
-//         </Typography>
-//         <form onSubmit={handleSubmit}>
-//           <Box
-//             sx={{
-//               display: 'flex',
-//               flexWrap: 'wrap',
-//               gap: 2,
-//               justifyContent: 'space-between',
-//             }}
-//           >
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Batch Name"
-//               name="batchName"
-//               value={form.batchName}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Batch Time"
-//               type="time"
-//               name="batchTime"
-//               value={form.batchTime}
-//               onChange={handleChange}
-//               InputLabelProps={{ shrink: true }}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Batch Start Date"
-//               type="date"
-//               name="startDate"
-//               value={form.startDate}
-//               onChange={handleChange}
-//               InputLabelProps={{ shrink: true }}
-//               required
-//             />
-//             <FormControl sx={{ flexBasis: '48%' }} fullWidth required>
-//               <InputLabel>Course Name</InputLabel>
-//               <Select
-//                 name="courseName"
-//                 value={form.courseName}
-//                 onChange={handleChange}
-//                 label="Course Name"
-//               >
-//                 {courseOptions.map((course) => (
-//                   <MenuItem key={course} value={course}>
-//                     {course}
-//                   </MenuItem>
-//                 ))}
-//               </Select>
-//             </FormControl>
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Student Name"
-//               name="studentName"
-//               value={form.studentName}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Mobile Number"
-//               name="mobile"
-//               value={form.mobile}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Email ID"
-//               type="email"
-//               name="email"
-//               value={form.email}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Company Name"
-//               name="companyName"
-//               value={form.companyName}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Location"
-//               name="location"
-//               value={form.location}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Technology"
-//               name="technology"
-//               value={form.technology}
-//               onChange={handleChange}
-//               required
-//             />
-//             <TextField
-//               fullWidth
-//               sx={{ flexBasis: '48%' }}
-//               label="Package"
-//               name="package"
-//               value={form.package}
-//               onChange={handleChange}
-//               required
-//             />
-//             <Button
-//               variant="outlined"
-//               component="label"
-//               fullWidth
-//               sx={{ flexBasis: '48%', height: '56px' }}
-//             >
-//               Upload Offer Letter
-//               <input
-//                 type="file"
-//                 name="offerLetter"
-//                 hidden
-//                 accept=".pdf,.jpg,.png"
-//                 onChange={handleChange}
-//                 required
-//               />
-//             </Button>
-//             <Button
-//               variant="outlined"
-//               component="label"
-//               fullWidth
-//               sx={{ flexBasis: '48%', height: '56px' }}
-//             >
-//               Upload Email For Student
-//               <input
-//                 type="file"
-//                 name="offerLetter"
-//                 hidden
-//                 accept=".pdf,.jpg,.png"
-//                 onChange={handleChange}
-//                 required
-//               />
-//             </Button>
-//             <Button
-//               variant="outlined"
-//               component="label"
-//               fullWidth
-//               sx={{ flexBasis: '48%', height: '56px' }}
-//             >
-//               Upload Feedback Email
-//               <input
-//                 type="file"
-//                 name="offerLetter"
-//                 hidden
-//                 accept=".pdf,.jpg,.png"
-//                 onChange={handleChange}
-//                 required
-//               />
-//             </Button>
-//           </Box>
-
-//           <Box mt={3}>
-//             <Button type="submit" variant="contained" fullWidth>
-//               Submit
-//             </Button>
-//           </Box>
-//         </form>
-//       </Paper>
-//     </Container>
-//   );
-// };
-
-// export default AddPlacement;
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Container, TextField, Button, Box, MenuItem, Typography,
-  InputLabel, Select, FormControl, Paper, Stepper, Step, StepLabel
+  Container,
+  TextField,
+  Button,
+  Box,
+  MenuItem,
+  Typography,
+  InputLabel,
+  Select,
+  FormControl,
+  Snackbar,
+  Alert as MuiAlert,
 } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { connect } from 'react-redux';
 import { postPlacementDetails } from '../redux/action/action';
 
-const steps = ['Batch & Course Info', 'Student & Placement Info', 'Upload Documents'];
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
-const courseOptions = ['BCA', 'MCA', 'B.Tech', 'MBA'];
+const courseOptions = ['Java', 'AWS', 'Oracle', 'Web Development'];
 
 const AddPlacement = ({ postPlacementDetails, PlacementDetails }) => {
-  const [activeStep, setActiveStep] = useState(0);
   const [form, setForm] = useState({
     batchName: '',
     batchTime: '',
@@ -271,27 +39,69 @@ const AddPlacement = ({ postPlacementDetails, PlacementDetails }) => {
     feedbackEmail: null,
   });
 
+  const [errors, setErrors] = useState({
+    mobile: '',
+    email: '',
+  });
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
+    let updatedValue = type === 'file' ? files[0] : value;
+
+    if (name === 'mobile') {
+      if (!/^\d{0,10}$/.test(value)) return;
+      if (value && !/^\d{10}$/.test(value)) {
+        setErrors((prev) => ({ ...prev, mobile: 'Invalid mobile number' }));
+      } else {
+        setErrors((prev) => ({ ...prev, mobile: '' }));
+      }
+    }
+
+    if (name === 'email') {
+      if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        setErrors((prev) => ({ ...prev, email: 'Invalid email address' }));
+      } else {
+        setErrors((prev) => ({ ...prev, email: '' }));
+      }
+    }
+
     setForm({
       ...form,
-      [name]: type === 'file' ? files[0] : value,
+      [name]: updatedValue,
     });
   };
 
-  const handleNext = () => setActiveStep((prev) => prev + 1);
-  const handleBack = () => setActiveStep((prev) => prev - 1);
+  const isFormValid = () => {
+    const requiredFields = [
+      'batchName',
+      'batchTime',
+      'startDate',
+      'courseName',
+      'studentName',
+      'mobile',
+      'email',
+      'companyName',
+      'location',
+      'technology',
+      'package',
+    ];
+    for (let field of requiredFields) {
+      if (!form[field]) return false;
+    }
+    if (errors.mobile || errors.email) return false;
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create FormData to send as multipart/form-data
     const formData = new FormData();
 
-    // Append form data fields to FormData
     Object.keys(form).forEach((key) => {
-      // If it's a file input, append the file, otherwise append the value
-      if (key === 'offerLetter' || key === 'studentEmailDoc' || key === 'feedbackEmail') {
+      if (['offerLetter', 'studentEmailDoc', 'feedbackEmail'].includes(key)) {
         if (form[key]) {
           formData.append(key, form[key]);
         }
@@ -300,151 +110,266 @@ const AddPlacement = ({ postPlacementDetails, PlacementDetails }) => {
       }
     });
 
-    // Call the postPlacementDetails action with the FormData
     postPlacementDetails(formData);
+
+    setForm({
+      batchName: '',
+      batchTime: '',
+      startDate: '',
+      courseName: '',
+      studentName: '',
+      mobile: '',
+      email: '',
+      companyName: '',
+      location: '',
+      technology: '',
+      package: '',
+      offerLetter: null,
+      studentEmailDoc: null,
+      feedbackEmail: null,
+    });
+
+    setErrors({
+      mobile: '',
+      email: '',
+    });
   };
 
-  const renderStepContent = (step) => {
-    switch (step) {
-      case 0:
-        return (
-          <>
-            <TextField fullWidth label="Batch Name" name="batchName" value={form.batchName} onChange={handleChange} sx={{ mb: 2 }} />
-            <TextField fullWidth label="Batch Time" type="time" name="batchTime" value={form.batchTime} onChange={handleChange} InputLabelProps={{ shrink: true }} sx={{ mb: 2 }} />
-            <TextField fullWidth label="Start Date" type="date" name="startDate" value={form.startDate} onChange={handleChange} InputLabelProps={{ shrink: true }} sx={{ mb: 2 }} />
-            <FormControl fullWidth sx={{ mb: 2 }}>
-              <InputLabel>Course Name</InputLabel>
-              <Select name="courseName" value={form.courseName} onChange={handleChange} label="Course Name">
-                {courseOptions.map((course) => (
-                  <MenuItem key={course} value={course}>{course}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </>
-        );
-      case 1:
-        return (
-          <>
-            <TextField
-              fullWidth
-              name="studentName"
-              value={form.studentName}
-              onChange={handleChange}
-              label={<span>Student Name <span style={{ color: 'red' }}>*</span></span>}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Mobile <span style={{ color: 'red' }}>*</span></span>}
-              name="mobile"
-              value={form.mobile}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Email <span style={{ color: 'red' }}>*</span></span>}
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Company Name <span style={{ color: 'red' }}>*</span></span>}
-              name="companyName"
-              value={form.companyName}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Location <span style={{ color: 'red' }}>*</span></span>}
-              name="location"
-              value={form.location}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Technology <span style={{ color: 'red' }}>*</span></span>}
-              name="technology"
-              value={form.technology}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              label={<span>Package <span style={{ color: 'red' }}>*</span></span>}
-              name="package"
-              value={form.package}
-              onChange={handleChange}
-              sx={{ mb: 2 }}
-            />
-          </>
-        );
-      case 2:
-        return (
-          <>
-            <Button variant="contained" component="label" fullWidth sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
-              <CloudUploadIcon sx={{ mr: 1 }} />
-              Upload Offer Letter
-              <input type="file" name="offerLetter" hidden accept=".pdf,.jpg,.png" onChange={handleChange} />
-            </Button>
-            <Typography variant="body2" align="center" sx={{ mb: 1 }}>
-              or
-            </Typography>
-            <Button variant="outlined" component="label" fullWidth sx={{ mb: 2 }}>
-              Upload Email For Student
-              <input type="file" name="studentEmailDoc" hidden accept=".pdf,.jpg,.png" onChange={handleChange} />
-            </Button>
-            <Button variant="outlined" component="label" fullWidth sx={{ mb: 2 }}>
-              Upload Feedback Email
-              <input type="file" name="feedbackEmail" hidden accept=".pdf,.jpg,.png" onChange={handleChange} />
-            </Button>
-          </>
-        );
-      default:
-        return null;
+  useEffect(() => {
+    if (PlacementDetails.isSuccess === true) {
+      setSnackbarMsg(PlacementDetails.data.message);
+      setSnackbarSeverity('success');
+      setSnackbarOpen(true);
     }
+  }, [PlacementDetails]);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
-    <Container maxWidth="xs">
-      <Paper elevation={3} sx={{ p: 4, mt: 5, borderRadius: 2 }}>
-        <Typography variant="h5" align="center" gutterBottom>
-          Add Placement
-        </Typography>
-
-        <Stepper activeStep={activeStep} alternativeLabel sx={{ mb: 4 }}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-
-        <form onSubmit={handleSubmit}>
-          {renderStepContent(activeStep)}
-
-          <Box mt={3} display="flex" justifyContent="space-between">
-            <Button type="button" disabled={activeStep === 0} onClick={handleBack}>
-              Back
-            </Button>
-            {activeStep < steps.length - 1 ? (
-              <Button type="button" variant="contained" onClick={handleNext}>
-                Next
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="100vh"
+      sx={{ backgroundColor: '#f0f2f5', py: 5 }}
+    >
+      <Container maxWidth="sm">
+        <Box
+          sx={{
+            backgroundColor: '#fff',
+            padding: 4,
+            borderRadius: 3,
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            border: '1px solid #e0e0e0',
+          }}
+        >
+          <Typography
+            variant="h5"
+            align="center"
+            gutterBottom
+            sx={{ fontWeight: 'bold', color: '#3f51b5', mb: 5 }}
+          >
+            Add Placement
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 2,
+                justifyContent: 'space-between',
+              }}
+            >
+              <TextField
+                label="Batch Name"
+                name="batchName"
+                value={form.batchName}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Batch Time"
+                type="time"
+                name="batchTime"
+                value={form.batchTime}
+                onChange={handleChange}
+                InputLabelProps={{ shrink: true }}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Batch Start Date"
+                type="date"
+                name="startDate"
+                value={form.startDate}
+                onChange={handleChange}
+                InputLabelProps={{ shrink: true }}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <FormControl fullWidth sx={{ flexBasis: '48%' }} required>
+                <InputLabel>Course Name</InputLabel>
+                <Select
+                  name="courseName"
+                  value={form.courseName}
+                  onChange={handleChange}
+                  label="Course Name"
+                >
+                  {courseOptions.map((course) => (
+                    <MenuItem key={course} value={course}>
+                      {course}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <TextField
+                label="Student Name"
+                name="studentName"
+                value={form.studentName}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Mobile Number"
+                name="mobile"
+                value={form.mobile}
+                onChange={handleChange}
+                error={Boolean(errors.mobile)}
+                helperText={errors.mobile}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Email ID"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email}
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Company Name"
+                name="companyName"
+                value={form.companyName}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Location"
+                name="location"
+                value={form.location}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Technology"
+                name="technology"
+                value={form.technology}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <TextField
+                label="Package"
+                name="package"
+                value={form.package}
+                onChange={handleChange}
+                required
+                fullWidth
+                sx={{ flexBasis: '48%' }}
+              />
+              <Button
+                variant="outlined"
+                component="label"
+                fullWidth
+                sx={{ flexBasis: '48%', height: '56px' }}
+              >
+                Upload Offer Letter
+                <input
+                  type="file"
+                  name="offerLetter"
+                  hidden
+                  accept=".pdf,.jpg,.png"
+                  onChange={handleChange}
+                />
               </Button>
-            ) : (
-              <Button type="submit" variant="contained">
+              <Button
+                variant="outlined"
+                component="label"
+                fullWidth
+                sx={{ flexBasis: '48%', height: '56px' }}
+              >
+                Upload Email For Student
+                <input
+                  type="file"
+                  name="studentEmailDoc"
+                  hidden
+                  accept=".pdf,.jpg,.png"
+                  onChange={handleChange}
+                />
+              </Button>
+              <Button
+                variant="outlined"
+                component="label"
+                fullWidth
+                sx={{ flexBasis: '48%', height: '56px' }}
+              >
+                Upload Feedback Email
+                <input
+                  type="file"
+                  name="feedbackEmail"
+                  hidden
+                  accept=".pdf,.jpg,.png"
+                  onChange={handleChange}
+                />
+              </Button>
+            </Box>
+            <Box mt={3}>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={!isFormValid()}
+              >
                 Submit
               </Button>
-            )}
-          </Box>
-        </form>
-      </Paper>
-    </Container>
+            </Box>
+          </form>
+
+          {/* Snackbar */}
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={4000}
+            onClose={handleSnackbarClose}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          >
+            <Alert
+              onClose={handleSnackbarClose}
+              severity={snackbarSeverity}
+              sx={{ width: '100%' }}
+            >
+              {snackbarMsg}
+            </Alert>
+          </Snackbar>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
@@ -457,7 +382,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPlacement);
-
-
-
-// export default AddPlacement;
