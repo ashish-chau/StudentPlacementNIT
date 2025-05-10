@@ -73,18 +73,20 @@ const AddPlacement = ({
         setErrors((prev) => ({ ...prev, email: "" }));
       }
     }
-
-    setForm({
-      ...form,
-      [name]: updatedValue,
-    });
-
+    
     // if (type === "file") {
     //   const file = files[0];
     //   updatedValue = file;
     //   setSnackbarMsg(`${file.name} selected`);
     //   setSnackbarOpen(true);
     // }
+
+    setForm({
+      ...form,
+      [name]: updatedValue,
+    });
+
+    
   };
 
   const isFormValid = () => {
@@ -167,7 +169,7 @@ const AddPlacement = ({
       minHeight="100vh"
       sx={{ backgroundColor: "#f0f2f5", py: 5 }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="xl">
         <Box
           sx={{
             backgroundColor: "#fff",
@@ -219,8 +221,9 @@ const AddPlacement = ({
                 value={form.startDate}
                 onChange={handleChange}
                 InputLabelProps={{ shrink: true }}
-                inputProps={{}} // no restrictions
-                required
+                inputProps={{}}
+
+                
                 fullWidth
                 sx={{ flexBasis: "48%" }}
               />
@@ -395,6 +398,7 @@ const AddPlacement = ({
                   onChange={handleChange}
                 />
               </Button>
+             
               <Button
                 variant="contained"
                 component="label"

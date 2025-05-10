@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, Typography, Container, Snackbar, Alert, Paper } from '@mui/material';
+import { TextField, Button, Box, Typography, Container, Snackbar, Alert, Paper, IconButton } from '@mui/material';
 import { connect } from 'react-redux';
 import { postLogin } from '../redux/action/action';
 import { useNavigate } from 'react-router-dom';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = ({ postLogin, login }) => {
   const [mobile, setMobile] = useState('');
@@ -10,6 +12,7 @@ const Login = ({ postLogin, login }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('info');
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
   const navigate = useNavigate();
 
@@ -29,20 +32,25 @@ const Login = ({ postLogin, login }) => {
       setOpenSnackbar(true);
   
       if (login.isSuccess) {
+        localStorage.setItem('isLoggedIn', 'true'); // ✅ Add this
         setTimeout(() => {
           navigate('/add-placement');
         }, 1500);
       }
     }
   }, [login, navigate]);
-  
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
 
+  // Toggle password visibility
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xl">
       <Box
         display="flex"
         flexDirection="column"
@@ -58,7 +66,7 @@ const Login = ({ postLogin, login }) => {
             borderRadius: 3,
             backgroundColor: '#f5f5f5',
             width: '100%',
-            maxWidth: '400px',
+            maxWidth: '300px',
             boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
           }}
         >
@@ -86,7 +94,7 @@ const Login = ({ postLogin, login }) => {
               variant="outlined"
               fullWidth
               margin="normal"
-              type="password"
+              type={showPassword ? 'text' : 'password'} // Toggle between text and password
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -94,6 +102,19 @@ const Login = ({ postLogin, login }) => {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '8px',
                 },
+              }}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                    sx={{
+                      padding: 0,
+                    }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                ),
               }}
             />
             <Button type="submit" variant="contained" fullWidth sx={{ mt: 2, borderRadius: '8px', backgroundColor: '#3f51b5', '&:hover': { backgroundColor: '#303f9f' } }}>
