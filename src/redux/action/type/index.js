@@ -1,5 +1,6 @@
 export const types = {
    Login : "Login",
-   PlacementDetails : "PlacementDetails"
+   PlacementDetails : "PlacementDetails",
+   ExistMobile: "ExistMobile"
     
 }

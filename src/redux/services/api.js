@@ -40,3 +40,18 @@ export const PostPlacementDetails = async (payload) => {
     };
   }
 };
+
+export const GetMobileNumber = async (id) => {
+  try {
+    const response = await api.get(`api/verify/${id}`);
+    console.log("Mobile Number Response:", response);
+    return response.data;
+  } catch (error) {
+    console.error("API Error:", error.response?.data);
+    throw {
+      data: error.response?.data || { message: "Unknown error" },
+      status: error.response?.status || 500,
+    };
+  }
+};
+

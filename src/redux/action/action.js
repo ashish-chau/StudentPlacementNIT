@@ -9,3 +9,7 @@ export const postLogin = (payload) => {
     return {type: types.PlacementDetails, payload:payload};
   };
 
+  export const getMobileNumber = (payload) => {
+    return {type: types.ExistMobile, payload:payload}
+  }
+

@@ -1,7 +1,7 @@
-import {put,call, takeLatest,delay } from 'redux-saga/effects';
+import {put,call, takeLatest,delay, take } from 'redux-saga/effects';
 import { types } from '../action/type';
-import {  requestLogin, successLogin, failureLogin, requestPlacementDetails, successPlacementDetails, failurePlacementDetails } from '../reducers/PlacementReducer.js';
-import { PostLogin, PostPlacementDetails } from '../services/api.js';
+import {  requestLogin, successLogin, failureLogin, requestPlacementDetails, successPlacementDetails, failurePlacementDetails, requestExistMobile, successExistMobile, failureExistMobile } from '../reducers/PlacementReducer.js';
+import { GetMobileNumber, PostLogin, PostPlacementDetails } from '../services/api.js';
 
 // Worker Saga: Fetch Student Enquiry
 
@@ -33,6 +33,23 @@ import { PostLogin, PostPlacementDetails } from '../services/api.js';
     }
   }
 
+
+
+function* ExistMobile(action) {
+  try {
+    yield put(requestExistMobile());
+
+    // If action.payload is just the id
+    const MobileNo = yield call(GetMobileNumber, action.payload);
+
+    console.log("User Mobile No.:", MobileNo);
+    yield put(successExistMobile(MobileNo));
+  } catch (error) {
+    yield put(failureExistMobile(error));
+  }
+}
+
+
   
 
 
@@ -40,5 +57,6 @@ import { PostLogin, PostPlacementDetails } from '../services/api.js';
     
     yield takeLatest(types.Login, loginUser);
     yield takeLatest(types.PlacementDetails, placementDetails)
+    yield takeLatest(types.ExistMobile, ExistMobile)
   
   }
